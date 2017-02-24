@@ -60,9 +60,17 @@
             $GLOBALS['DB']->exec("DELETE FROM stylists");
         }
 
-        static function find()
+        static function find($new_id)
         {
-
+            $match_stylist = null;
+            $stylists = Stylist::getAll();
+            foreach ($stylists as $stylist) {
+                $stylist_id = $stylist->getId();
+                if ($stylist_id == $new_id) {
+                    $match_stylist = $stylist;
+                }
+            }
+            return $match_stylist;
         }
     }
  ?>

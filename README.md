@@ -15,10 +15,11 @@ This program allows the hair salon to keep track of which hair stylists are work
 |Check if stylist name can be returned|"Sandy Star"|"Sandy Star"|
 |Check if stylist work id number can be returned|1|1|
 |Check if each person can be saved for later use|"Sandy Star", 1|"Sandy Star", 1|
-|Save all records|stylist: "Sandy Star" stylist2: "Hank the Tank"|stylist: "Sandy Star" stylist2: "Hank the Tank"|
-|Delete all records|stylist: "Sandy Star" stylist2: "Hank the Tank"|" "|
-|Update individual records for a stylist or client|stylist: "Sandy Star"|stylist: "Hank the Tank"|
-|Delete individual records for stylist or client|stylist: "Sandy Star" stylist2: "Hank the Tank"|"hank the Tank"|
+|Save all records|stylist1:"Sandy Star" stylist2:"Hank the Tank"|stylist1:"Sandy Star" stylist2:"Hank the Tank"|
+|Delete all records|stylist1:"Sandy Star" stylist2:"Hank the Tank"|" "|
+|Update individual records for a stylist or client|stylist1:"Sandy Star"|stylist1:"Hank the Tank"|
+|Delete individual records for stylist or client|stylist1:"Sandy Star" stylist2:"Hank the Tank"|"hank the Tank"|
+|Find stylists or clients by matching names|stylist1:"Hank the Tank" stylist2:"Hank the Tank"|true|
 
 
 

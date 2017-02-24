@@ -19,7 +19,7 @@
            Stylist::deleteAll();
          }
 
-        /// Test: test_getStylistName
+        /// Test: test getStylistName()
         // Description: check class Stylist is made and can call name by getStylistName()
         // Input: "Sandy Star"
         // Output: "Sandy Star"
@@ -45,10 +45,7 @@
            //Assert
            $this->assertEquals(true, is_numeric($result));
        }
-       ////Test: test_save
-       //We need to create and test
-       //save()
-       //getAll()
+       ////Test: test save()
        //Description: add stylist_name restaurant to table and return
        //Input: "Sandy Star"
        //Output: Sandy Star"
@@ -62,10 +59,7 @@
            //Assert
            $this->assertEquals($result, $result);
        }
-       ////Test: test_getAll
-       //We need to create and test
-       //save()
-       //getAll()
+       ////Test: test getAll()
        //Description: add stylist_two stylists to table and return
        //Input: "Sandy Star"
        //Input2: "Fank the Tank"
@@ -85,9 +79,7 @@
            $this->assertEquals($test_stylist_name, $result[0]);
        }
 
-       ///Test 2: test_deleteAll()    *don't forget tearDown!!
-        //We need
-        //deleteAll()
+       ///Test 2: test_deleteAll()
         //Description: delete all records from stylists_name
         //Input: "Sandy Star"
         //Input2: "Hank the Tank"
@@ -108,7 +100,7 @@
            $this->assertEquals([], $result);
        }
 
-       /// Test update
+       /// Test update()
        // Description: update individual records
        // Input: "Sandy Star"
        // Output: "Hank the Tank"
@@ -123,7 +115,7 @@
             // Assert
             $this->assertEquals($new_stylist_name, $test_stylist->getStylistName());
         }
-        /// Test delete
+        /// Test delete()
         // Description: delete individual records
         // Input: "Sandy Star"
         // Input2: "Hank the Tank"
@@ -141,6 +133,27 @@
             $test_stylist->delete();
             //Assert
             $this->assertEquals( [$test_stylist2], Stylist::getAll());
+        }
+
+        ///Test test find()
+        //description: find all matching stylists
+        //Input restaurant_name1 = "Sandy Star, 1", restaurant_name2 = "Hank the Tank, 2"
+        //output: "Hank the Tank, Hank the Tank"
+        function test_find()
+        {
+            //Arrange
+            $stylist_name = "Sandy Star";
+            $stylist_id = 1;
+            $stylist_name2 = "Hank the Tank";
+            $stylist_id2 = 2;
+            $test_stylist = new Stylist($stylist_name, $stylist_id);
+            $test_stylist->save();
+            $test_stylist2 = new Stylist($stylist_name2, $stylist_id2);
+            $test_stylist2->save();
+            //Act
+            $result = Stylist::find($test_stylist->getId());
+            //Assert
+            $this->assertEquals($test_stylist, $result);
         }
 
 
