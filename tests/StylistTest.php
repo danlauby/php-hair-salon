@@ -109,7 +109,7 @@
        }
 
        /// Test update
-       // Description update individual records
+       // Description: update individual records
        // Input: "Sandy Star"
        // Output: "Hank the Tank"
         function test_update()
@@ -123,6 +123,26 @@
             // Assert
             $this->assertEquals($new_stylist_name, $test_stylist->getStylistName());
         }
+        /// Test delete
+        // Description: delete individual records
+        // Input: "Sandy Star"
+        // Input2: "Hank the Tank"
+        // Output: "Hank the Tank"
+        function testDelete()
+        {
+            //Arrange
+            $stylist_name = "Sandy Star";
+            $test_stylist = new Stylist($stylist_name);
+            $test_stylist->save();
+            $stylist_name2 = "Hank the Tank";
+            $test_stylist2 = new Stylist($stylist_name2);
+            $test_stylist2->save();
+            //Act
+            $test_stylist->delete();
+            //Assert
+            $this->assertEquals( [$test_stylist2], Stylist::getAll());
+        }
+
 
     }
 

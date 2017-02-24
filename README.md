@@ -18,6 +18,7 @@ This program allows the hair salon to keep track of which hair stylists are work
 |Save all records|stylist: "Sandy Star" stylist2: "Hank the Tank"|stylist: "Sandy Star" stylist2: "Hank the Tank"|
 |Delete all records|stylist: "Sandy Star" stylist2: "Hank the Tank"|" "|
 |Update individual records for a stylist or client|stylist: "Sandy Star"|stylist: "Hank the Tank"|
+|Delete individual records for stylist or client|stylist: "Sandy Star" stylist2: "Hank the Tank"|"hank the Tank"|
 
 
 
