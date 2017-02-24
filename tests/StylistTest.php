@@ -14,6 +14,11 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
+        // protected function teardown()
+        //     {
+        //         Stylist::deletAll();
+        //     }
+
         /// Test: test_getStylistName
         // Description: check class Stylist is made and can call name by getStylistName()
         // Input: "Sandy Star"
@@ -38,13 +43,13 @@
            //Act
            $result = $test_stylist_id->getId();
            //Assert
-           $this->assertEquals($stylist_id, $result);
+           $this->assertEquals(true, is_numeric($result));
        }
        ////Test: test_save
        //We need to create and test
        //save()
        //getAll()
-       //Desc: add stylist_name restaurant to table and return
+       //Description: add stylist_name restaurant to table and return
        //Input: "Sandy Star"
        //Output: Sandy Star"
        function test_save()
@@ -57,8 +62,58 @@
            //Assert
            $this->assertEquals($result, $result);
        }
+       ////Test: test_getAll
+       //We need to create and test
+       //save()
+       //getAll()
+       //Description: add stylist_two stylists to table and return
+       //Input: "Sandy Star"
+       //Input2: "Fank the Tank"
+       //Output: Sandy Star"
+    //    function test_getAll()
+    //    {
+    //        // Arrange
+    //        $stylist_name = "Sandy Star";
+    //        $id = null;
+    //        $stylist_name2 = "Hank the Tank";
+    //        $id2 = null;
+    //        $test_stylist_name = new Stylist($stylist_name, $id);
+    //        $test_stylist_name->save();
+    //        $test_stylist_name2= new Stylist($stylist_name2);
+    //        $test_stylist_name2->save();
+    //        //Act
+    //        $result = Stylist::getAll();
+    //        //Assert
+    //        $this->assertEquals($test_stylist_name, $result[0]);
+    //    }
+
+
+///Test 2: test_deleteAll()    *don't forget tearDown!!
+        //We need
+        //deleteAll()
+        //Description: delete all records from stylists_name
+        //Input: "Sandy Star"
+        //Input2: "Hank the Tank"
+        //Output: " "
+       function test_deleteAll()
+       {
+           // Arrange
+           $stylist_name = "Sandy Star";
+           $stylist_name2 = "Hank the Tank";
+           $test_stylist = new Stylist($stylist_name);
+           $test_stylist->save();
+           $test_stylist2= new Stylist($stylist_name2);
+           $test_stylist2->save();
+           //Act
+           Stylist::deleteAll();
+           $result = Stylist::getAll();
+           //Assert
+           $this->assertEquals([], $result);
+       }
 
     }
+
+
 
 
  ?>
