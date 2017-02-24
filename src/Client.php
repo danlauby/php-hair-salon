@@ -29,7 +29,8 @@
 
         function save()
         {
-
+            $GLOBALS['DB']->exec("INSERT INTO clients(client_name) VALUES ('{$this->getClientName()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         function update()
