@@ -10,14 +10,14 @@
             $this->id = $id;
         }
 
-        function setStylistName()
+        function setStylistName($new_stylist_name)
         {
-
+            $this->stylist_name = $new_stylist_name;
         }
 
         function getStylistName()
         {
-
+            return $this->stylist_name;
         }
 
         function getId()
