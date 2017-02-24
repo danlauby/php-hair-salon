@@ -5,25 +5,26 @@
         private $stylist_id;
         private $id;
 
-        function __construct($client_name, $stylist_id, $id = null)
+        function __construct($client_name, $stylist_id = null, $id = null)
         {
             $this->client_name = $client_name;
-            $this->client_id = $client_id;
+            $this->stylist_id = $stylist_id;
             $this->id = $id;
         }
 
-        function setStylistName()
+        function setClientName($new_client_name)
         {
+            $this->client_name = $new_client_name;
         }
 
-        function getStylistName()
+        function getClientName()
         {
-
+            return $this->client_name;
         }
 
         function getId()
         {
-
+            return $this->id;
         }
 
         function save()

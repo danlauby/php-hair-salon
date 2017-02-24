@@ -14,10 +14,10 @@
 
     class ClientTest extends PHPUnit_Framework_TestCase
     {
-        protected function tearDown()
-         {
-           Client::deleteAll();
-         }
+        // protected function tearDown()
+        //  {
+        //    Client::deleteAll();
+        //  }
 
         /// Test: test getClientName()
         // Description: check class Client is made and can call name by getClientName()
@@ -37,9 +37,10 @@
        function test_getId()
        {
            //Arrange
-           $client_name = "Lilly Anne";
-           $client_id = 1;
-           $test_client_id = new Client($client_name, $client_id);
+           $client_name = "Sandy Star";
+           $stylist_id = 2;
+           $id = 1;
+           $test_client_id = new Client($client_name, $stylist_id, $id);
            //Act
            $result = $test_client_id->getId();
            //Assert
@@ -53,7 +54,8 @@
        {
            //Arrange
            $client_name = "Lilly Anne";
-           $test_client_name = new Client($client_name);
+           $client_id = 1;
+           $test_client_name = new Client($client_name, $client_id);
            //Act
            $result = $test_client_name->save();
            //Assert
@@ -68,10 +70,12 @@
        {
            // Arrange
            $client_name = "Lilly Anne";
+           $client_id = 1;
            $client_name2 = "Bobby Showdown";
-           $test_client_name = new Client($client_name);
+           $client_id2 = 2;
+           $test_client_name = new Client($client_name, $client_id);
            $test_client_name->save();
-           $test_client_name2= new Client($client_name2);
+           $test_client_name2= new Client($client_name2, $client_id2);
            $test_client_name2->save();
            //Act
            $result = Client::getAll();
@@ -88,10 +92,12 @@
        {
            // Arrange
            $client_name = "Lilly Anne";
+           $client_id = 1;
            $client_name2 = "Bobby Showdown";
-           $test_client = new Client($client_name);
+           $client_id2 = 2;
+           $test_client = new Client($client_name, $client_id);
            $test_client->save();
-           $test_client2= new Client($client_name2);
+           $test_client2= new Client($client_name2, $client_id2);
            $test_client2->save();
            //Act
            Client::deleteAll();
@@ -108,8 +114,10 @@
         {
             // Arrange
             $client_name = "Lilly Anne";
-            $test_client = new Client($client_name);
+            $client_id = 1;
+            $test_client = new Client($client_name, $client_id);
             $new_client_name = "Bobby Showdown";
+            $client_id2 = 2;
             // Act
             $test_client->update($new_client_name);
             // Assert
@@ -124,10 +132,12 @@
         {
             //Arrange
             $client_name = "Lilly Anne";
-            $test_client = new Client($client_name);
+            $client_id = 1;
+            $test_client = new Client($client_name, $client_id);
             $test_client->save();
             $client_name2 = "Bobby Showdown";
-            $test_client2 = new Client($client_name2);
+            $client_id2 = 2;
+            $test_client2 = new Client($client_name2, $client_id2);
             $test_client2->save();
             //Act
             $test_client->delete();
