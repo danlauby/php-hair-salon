@@ -113,19 +113,19 @@
     //    // Description: update individual records
     //    // Input: "Lilly Anne"
     //    // Output: "Bobby Showdown"
-    //     function test_update()
-    //     {
-    //         // Arrange
-    //         $client_name = "Lilly Anne";
-    //         $client_id = 1;
-    //         $test_client = new Client($client_name, $client_id);
-    //         $new_client_name = "Bobby Showdown";
-    //         $client_id2 = 2;
-    //         // Act
-    //         $test_client->update($new_client_name);
-    //         // Assert
-    //         $this->assertEquals($new_client_name, $test_client->getClientName());
-    //     }
+        function test_update()
+        {
+            // Arrange
+            $client_name = "Lilly Anne";
+            $client_id = 1;
+            $test_client = new Client($client_name, $client_id);
+            $new_client_name = "Bobby Showdown";
+            $client_id2 = 2;
+            // Act
+            $test_client->update($new_client_name);
+            // Assert
+            $this->assertEquals($new_client_name, $test_client->getClientName());
+        }
     //     /// Test delete()
     //     // Description: delete individual records
     //     // Input: "Lilly Anne"

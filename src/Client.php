@@ -33,9 +33,10 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function update()
+        function update($new_client_name)
         {
-
+            $GLOBALS['DB']->exec("UPDATE clients SET '$new_client_name' WHERE id = {$this->getId()};");
+            $this->setClientName($new_client_name);
         }
 
         function delete()
