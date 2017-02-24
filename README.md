@@ -15,6 +15,8 @@ This program allows the hair salon to keep track of which hair stylists are work
 |Check if stylist name can be returned|"Sandy Star"|"Sandy Star"|
 |Check if stylist work id number can be returned|1|1|
 |Check if each person can be saved for later use|"Sandy Star", 1|"Sandy Star", 1|
+|Save all records|stylist: "Sandy Star" stylist2: "Hank the Tank"|stylist: "Sandy Star" stylist2: "Hank the Tank"|
+|Delete all records|stylist: "Sandy Star" stylist2: "Hank the Tank"|" "|
 
 
 
