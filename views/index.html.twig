@@ -21,6 +21,9 @@
                         <li><a href="#">{{ stylist.getStylistName }}</a></li>
                     {% endfor %}
                 </ul>
+                <form class="form-group" action="/deleteall" method="get">
+                    <button class="btn btn-danger" type="submit">Delete list</button>
+                </form>
             {% endif %}
         </div>
     </body>

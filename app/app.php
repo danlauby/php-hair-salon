@@ -33,5 +33,10 @@
         $stylist->save();
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
+
+    $app->get('/deleteall', function() use ($app) {
+        Stylist::deleteAll();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
     return $app;
  ?>
