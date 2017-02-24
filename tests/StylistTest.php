@@ -40,6 +40,25 @@
            //Assert
            $this->assertEquals($stylist_id, $result);
        }
+       ////Test: test_save
+       //We need to create and test
+       //save()
+       //getAll()
+       //Desc: add stylist_name restaurant to table and return
+       //Input: "Sandy Star"
+       //Output: Sandy Star"
+       function test_save()
+       {
+           //Arrange
+           $stylist_name = "Sandy Star";
+           $test_stylist_name = new Stylist($stylist_name);
+           //Act
+           $result = $test_stylist_name->save();
+           //Assert
+           $this->assertEquals($result, $result);
+       }
 
     }
+
+
  ?>
