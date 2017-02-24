@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Hair Salon Manager</title>
+    </head>
+    <body>
+        <h1>Hair Salon Manager</h1>
+        <div class="container">
+            <h2>Stylist:</h2>
+            <form class="form-group" action="/stylist" method="post">
+                <label for="stylist">New Stylist:</label>
+                <input class="form-control" type="text" name="stylist">
+                <button class="btn btn-success" type="submit">Save</button>
+            </form>
+            {% if stylists is not empty %}
+                <h2>Stylist List:</h2>
+                <ul>
+                    {% for stylist in stylists %}
+                        <li><a href="#">{{ stylist.getStylistName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </body>
+</html>
