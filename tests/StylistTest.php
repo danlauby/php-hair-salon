@@ -14,10 +14,10 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
-        // protected function teardown()
-        //     {
-        //         Stylist::deletAll();
-        //     }
+        protected function tearDown()
+         {
+           Stylist::deleteAll();
+         }
 
         /// Test: test_getStylistName
         // Description: check class Stylist is made and can call name by getStylistName()
@@ -70,25 +70,22 @@
        //Input: "Sandy Star"
        //Input2: "Fank the Tank"
        //Output: Sandy Star"
-    //    function test_getAll()
-    //    {
-    //        // Arrange
-    //        $stylist_name = "Sandy Star";
-    //        $id = null;
-    //        $stylist_name2 = "Hank the Tank";
-    //        $id2 = null;
-    //        $test_stylist_name = new Stylist($stylist_name, $id);
-    //        $test_stylist_name->save();
-    //        $test_stylist_name2= new Stylist($stylist_name2);
-    //        $test_stylist_name2->save();
-    //        //Act
-    //        $result = Stylist::getAll();
-    //        //Assert
-    //        $this->assertEquals($test_stylist_name, $result[0]);
-    //    }
+       function test_getAll()
+       {
+           // Arrange
+           $stylist_name = "Sandy Star";
+           $stylist_name2 = "Hank the Tank";
+           $test_stylist_name = new Stylist($stylist_name);
+           $test_stylist_name->save();
+           $test_stylist_name2= new Stylist($stylist_name2);
+           $test_stylist_name2->save();
+           //Act
+           $result = Stylist::getAll();
+           //Assert
+           $this->assertEquals($test_stylist_name, $result[0]);
+       }
 
-
-///Test 2: test_deleteAll()    *don't forget tearDown!!
+       ///Test 2: test_deleteAll()    *don't forget tearDown!!
         //We need
         //deleteAll()
         //Description: delete all records from stylists_name
