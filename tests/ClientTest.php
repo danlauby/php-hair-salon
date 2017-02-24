@@ -131,23 +131,21 @@
     //     // Input: "Lilly Anne"
     //     // Input2: "Bobby Showdown"
     //     // Output: "Bobby Showdown"
-    //     function testDelete()
-    //     {
-    //         //Arrange
-    //         $client_name = "Lilly Anne";
-    //         $client_id = 1;
-    //         $test_client = new Client($client_name, $client_id);
-    //         $test_client->save();
-    //         $client_name2 = "Bobby Showdown";
-    //         $client_id2 = 2;
-    //         $test_client2 = new Client($client_name2, $client_id2);
-    //         $test_client2->save();
-    //         //Act
-    //         $test_client->delete();
-    //         //Assert
-    //         $this->assertEquals( [$test_client2], Client::getAll());
-    //     }
-    //
+        function testDelete()
+        {
+            //Arrange
+            $client_name = "Lilly Anne";
+            $test_client = new Client($client_name);
+            $test_client->save();
+            $client_name2 = "Bobby Showdown";
+            $test_client2 = new Client($client_name2);
+            $test_client2->save();
+            //Act
+            $test_client->delete();
+            //Assert
+            $this->assertEquals( [$test_client2], Client::getAll());
+        }
+
     //     ///Test test find()
     //     //description: find all matching clients
     //     //Input restaurant_name1 = "Lilly Anne, 1", restaurant_name2 = "Bobby Showdown, 2"
