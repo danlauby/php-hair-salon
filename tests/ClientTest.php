@@ -14,10 +14,10 @@
 
     class ClientTest extends PHPUnit_Framework_TestCase
     {
-        // protected function tearDown()
-        //  {
-        //    Client::deleteAll();
-        //  }
+        protected function tearDown()
+         {
+           Client::deleteAll();
+         }
 
         /// Test: test getClientName()
         // Description: check class Client is made and can call name by getClientName()
@@ -65,47 +65,49 @@
        ////Test: test getAll()
        //Description: add client_two clients to table and return
        //Input: "Lilly Anne"
-       //Input2: "Fank the Tank"
+       //Input2: "Bobby Showdown"
        //Output: Lilly Anne"
-    //    function test_getAll()
-    //    {
-    //        // Arrange
-    //        $client_name = "Lilly Anne";
-    //        $client_id = 1;
-    //        $client_name2 = "Bobby Showdown";
-    //        $client_id2 = 2;
-    //        $test_client_name = new Client($client_name, $client_id);
-    //        $test_client_name->save();
-    //        $test_client_name2= new Client($client_name2, $client_id2);
-    //        $test_client_name2->save();
-    //        //Act
-    //        $result = Client::getAll();
-    //        //Assert
-    //        $this->assertEquals($test_client_name, $result[0]);
-    //    }
+       function test_getAll()
+       {
+           // Arrange
+           $client_name = "Lilly Anne";
+        //    $stylist_id = 1;
+        //    $id = null;
+           $client_name2 = "Bobby Showdown";
+        //    $stylist_id2 = 2;
+        //    $id2 = null;
+           $test_client_name = new Client($client_name);
+           $test_client_name->save();
+           $test_client_name2= new Client($client_name2);
+           $test_client_name2->save();
+           //Act
+           $result = Client::getAll();
+           //Assert
+           $this->assertEquals($test_client_name, $result[0]);
+       }
     //
     //    ///Test 2: test_deleteAll()
     //     //Description: delete all records from clients_name
     //     //Input: "Lilly Anne"
     //     //Input2: "Bobby Showdown"
     //     //Output: " "
-    //    function test_deleteAll()
-    //    {
-    //        // Arrange
-    //        $client_name = "Lilly Anne";
-    //        $client_id = 1;
-    //        $client_name2 = "Bobby Showdown";
-    //        $client_id2 = 2;
-    //        $test_client = new Client($client_name, $client_id);
-    //        $test_client->save();
-    //        $test_client2= new Client($client_name2, $client_id2);
-    //        $test_client2->save();
-    //        //Act
-    //        Client::deleteAll();
-    //        $result = Client::getAll();
-    //        //Assert
-    //        $this->assertEquals([], $result);
-    //    }
+       function test_deleteAll()
+       {
+           // Arrange
+           $client_name = "Lilly Anne";
+           $client_id = 1;
+           $client_name2 = "Bobby Showdown";
+           $client_id2 = 2;
+           $test_client = new Client($client_name, $client_id);
+           $test_client->save();
+           $test_client2= new Client($client_name2, $client_id2);
+           $test_client2->save();
+           //Act
+           Client::deleteAll();
+           $result = Client::getAll();
+           //Assert
+           $this->assertEquals([], $result);
+       }
     //
     //    /// Test update()
     //    // Description: update individual records

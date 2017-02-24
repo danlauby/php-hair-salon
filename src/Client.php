@@ -2,13 +2,13 @@
     class Client
     {
         private $client_name;
-        private $stylist_id;
+        private $client_id;
         private $id;
 
-        function __construct($client_name, $stylist_id = null, $id = null)
+        function __construct($client_name, $client_id = null, $id = null)
         {
             $this->client_name = $client_name;
-            $this->stylist_id = $stylist_id;
+            $this->client_id = $client_id;
             $this->id = $id;
         }
 
@@ -45,11 +45,22 @@
 
         static function getAll()
         {
-
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients");
+            $clients = [];
+            foreach ($returned_clients as $client) {
+                $new_client_name = $client['client_name'];
+                $new_stylist_id = $client['stylist_id'];
+                $new_id = $client['id'];
+                var_dump($new_id);
+                $new_Client = new Client($new_client_name, $new_stylist_id, $new_id);
+                array_push($clients, $new_Client);
+            }
+            return $clients;
         }
 
         static function deleteAll()
         {
+            $GLOBALS['DB']->exec("DELETE FROM clients");
         }
 
         static function find()
