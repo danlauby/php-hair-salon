@@ -108,6 +108,22 @@
            $this->assertEquals([], $result);
        }
 
+       /// Test update
+       // Description update individual records
+       // Input: "Sandy Star"
+       // Output: "Hank the Tank"
+        function test_update()
+        {
+            // Arrange
+            $stylist_name = "Sandy Star";
+            $test_stylist = new Stylist($stylist_name);
+            $new_stylist_name = "Hank the Tank";
+            // Act
+            $test_stylist->update($new_stylist_name);
+            // Assert
+            $this->assertEquals($new_stylist_name, $test_stylist->getStylistName());
+        }
+
     }
 
 

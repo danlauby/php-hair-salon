@@ -31,9 +31,10 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function update()
+        function update($new_stylist_name)
         {
-
+            $GLOBALS['DB']->exec("UPDATE stylists SET '$new_stylist_name' WHERE id = {$this->getId()};");
+            $this->setStylistName($new_stylist_name);
         }
 
         function delete()
