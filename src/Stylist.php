@@ -72,5 +72,19 @@
             }
             return $match_stylist;
         }
+
+        // static function getMatch($stylist_id)
+        // {
+        //     $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists WHERE stylist_id = {$stylist_id};");
+        //     $stylists = array();
+        //     foreach($returned_stylists as $returned_stylist){
+        //         $new_stylist_name = $name['stylist_name'];
+        //         $new_id = $name['id'];
+        //         $new_stylist_object = new Stylist($new_stylist_name, $new_id);
+        //         array_push($stylists, $new_stylist_object);
+        //     }
+        //     return $stylists;
+        // }
+
     }
  ?>

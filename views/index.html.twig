@@ -11,7 +11,7 @@
             <h2>Stylist:</h2>
             <form class="form-group" action="/stylist" method="post">
                 <label for="stylist">New Stylist:</label>
-                <input class="form-control" type="text" name="stylist">
+                <input class="form-control" type="text" name="stylist"><br>
                 <button class="btn btn-success" type="submit">Save</button>
             </form>
             {% if stylists is not empty %}
@@ -19,9 +19,11 @@
                 <ul>
                     {% for stylist in stylists %}
                         <li><a href="#">{{ stylist.getStylistName }}</a></li>
+                        <span><a class="btn btn-warning" href="/edit-stylist/{{ stylist.getId }}">Edit</a></span>
+                        <span><a class="btn btn-danger" href="/edit-stylist/{{ stylist.getId }}">Delete</a></span>
                     {% endfor %}
-                </ul>
-                <form class="form-group" action="/deleteall" method="get">
+                </ul><br>
+                <form class="form-group" action="/delete-all" method="get">
                     <button class="btn btn-danger" type="submit">Delete list</button>
                 </form>
             {% endif %}
