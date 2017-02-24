@@ -63,10 +63,18 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM clients");
         }
-
-        static function find()
+        
+        static function find($new_id)
         {
-
+            $match_client = null;
+            $clients = Client::getAll();
+            foreach ($clients as $client) {
+                $client_id = $client->getId();
+                if ($client_id == $new_id) {
+                    $match_client = $client;
+                }
+            }
+            return $match_client;
         }
 
     }
