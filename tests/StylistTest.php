@@ -29,5 +29,17 @@
            $this->assertEquals($stylist_name, $result);
        }
 
+       function test_getId()
+       {
+           //Arrange
+           $stylist_name = "Sandy Star";
+           $stylist_id = 1;
+           $test_stylist_id = new Stylist($stylist_name, $stylist_id);
+           //Act
+           $result = $test_stylist_id->getId();
+           //Assert
+           $this->assertEquals($stylist_id, $result);
+       }
+
     }
  ?>
