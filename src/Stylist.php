@@ -31,16 +31,16 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function update($new_stylist_name)
-        {
-            $GLOBALS['DB']->exec("UPDATE stylists SET '$new_stylist_name' WHERE id = {$this->getId()};");
-            $this->setStylistName($new_stylist_name);
-        }
+        // function update($new_stylist_name)
+        // {
+        //     $GLOBALS['DB']->exec("UPDATE stylists SET '$new_stylist_name' WHERE id = {$this->getId()};");
+        //     $this->setStylistName($new_stylist_name);
+        // }
 
-        function delete()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
-        }
+        // function delete()
+        // {
+        //     $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+        // }
 
         static function getAll()
         {
@@ -55,29 +55,30 @@
             return $stylists;
         }
 
-        static function deleteAll()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM stylists");
-        }
-
-        static function find($new_id)
-        {
-            $match_stylist = null;
-            $stylists = Stylist::getAll();
-            foreach ($stylists as $stylist) {
-                $stylist_id = $stylist->getId();
-                if ($stylist_id == $new_id) {
-                    $match_stylist = $stylist;
-                }
-            }
-            return $match_stylist;
-        }
-
+        // static function deleteAll()
+        // {
+        //     $GLOBALS['DB']->exec("DELETE FROM stylists");
+        // }
+        //
+        // static function find($new_id)
+        // {
+        //     $match_stylist = null;
+        //     $stylists = Stylist::getAll();
+        //     foreach ($stylists as $stylist) {
+        //         $stylist_id = $stylist->getId();
+        //         if ($stylist_id == $new_id) {
+        //             $match_stylist = $stylist;
+        //         }
+        //     }
+        //     return $match_stylist;
+        // }
+        //
         // static function getMatch($stylist_id)
         // {
         //     $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists WHERE stylist_id = {$stylist_id};");
+        //     var_dump($returned_stylists);
         //     $stylists = array();
-        //     foreach($returned_stylists as $returned_stylist){
+        //     foreach ($returned_stylists as $returned_stylist){
         //         $new_stylist_name = $name['stylist_name'];
         //         $new_id = $name['id'];
         //         $new_stylist_object = new Stylist($new_stylist_name, $new_id);
