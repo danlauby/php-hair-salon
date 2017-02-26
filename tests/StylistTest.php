@@ -18,7 +18,7 @@
         {
           Stylist::deleteAll();
         }
-        
+
         function test_getStylistName()
        {
            //Arrange
@@ -63,10 +63,8 @@
            $test_task->save();
            $test_task2 = new Stylist($stylist_name2);
            $test_task2->save();
-
            //Act
            $result = Stylist::getAll();
-
            //Assert
            $this->assertEquals([$test_task, $test_task2], $result);
        }
@@ -130,18 +128,16 @@
         //     $this->assertEquals( [$test_stylist2], Stylist::getAll());
         // }
 
-        // function test_find()
-        // {
-        //     //Arrange
-        //     $stylist_name = "Sandy Star";
-        //     $stylist_name2 = "Hank the Tank";
-        //     $test_stylist = new Stylist($stylist_name);
-        //     $test_stylist->save();
-        //     $test_stylist2 = new Stylist($stylist_name2);
-        //     $test_stylist2->save();
-        //     //Act
-        //     $result = Stylist::find($test_stylist->getId());
-        //     //Assert
-        //     $this->assertEquals($test_stylist, $result);
-        // }
+        static function find($id)
+        {
+            $found_stylist = null;
+            $stylists = Stylist::getAll();
+            foreach($stylists as $stylist) {
+                $stylist_id = $stylist->getId();
+                if ($stylist_id == $id) {
+                    $found_stylist = $stylist;
+                }
+            }
+            return $found_stylist;
+        }
     }
