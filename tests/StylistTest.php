@@ -14,10 +14,11 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
-    //     protected function tearDown()
-    //     {
-    //       Stylist::deleteAll();
-    //     }
+        protected function tearDown()
+        {
+          Stylist::deleteAll();
+        }
+        
         function test_getStylistName()
        {
            //Arrange
@@ -40,33 +41,51 @@
            //Assert
            $this->assertEquals(true, is_numeric($result));
        }
-    //
-    //    function test_save()
-    //    {
-    //        //Arrange
-    //        $stylist_name = "Sandy Star";
-    //        $test_stylist = new Stylist($stylist_name);
-    //        //Act
-    //        $result = $test_stylist->save();
-    //        //Assert
-    //
-    //        $this->assertEquals($result, $result[0]);
-    //    }
 
-    //    function test_getAll()
-    //    {
-    //        // Arrange
-    //        $stylist_name = "Sandy Star";
-    //        $stylist_name2 = "Hank the Tank";
-    //        $test_stylist = new Stylist($stylist_name);
-    //        $test_stylist->save();
-    //        $test_stylist2= new Stylist($stylist_name2);
-    //        $test_stylist2->save();
-    //        //Act
-    //        $result = Stylist::getAll();
-    //        //Assert
-    //        $this->assertEquals([$test_stylist, $test_stylist2], $result);
-    //    }
+       function test_save()
+        {
+            //Arrange
+            $stylist_name = "Sandy Star";
+            $test_Stylist = new Stylist($stylist_name);
+            $test_Stylist->save();
+            //Act
+            $result = Stylist::getAll();
+            //Assert
+            $this->assertEquals($test_Stylist, $result[0]);
+        }
+
+        function test_getAll()
+       {
+           //Arrange
+           $stylist_name = "Sandy Star";
+           $stylist_name2 = "Hank the Tank";
+           $test_task = new Stylist($stylist_name);
+           $test_task->save();
+           $test_task2 = new Stylist($stylist_name2);
+           $test_task2->save();
+
+           //Act
+           $result = Stylist::getAll();
+
+           //Assert
+           $this->assertEquals([$test_task, $test_task2], $result);
+       }
+
+       function test_deleteAll()
+       {
+           //Arrange
+           $stylist_name = "Sandy Star";
+           $stylist_name2 = "Hank the Tank";
+           $test_task = new Stylist($stylist_name);
+           $test_task->save();
+           $test_task2 = new Stylist($stylist_name2);
+           $test_task2->save();
+           //Act
+           Stylist::deleteAll();
+           $result = Stylist::getAll();
+           //Assert
+           $this->assertEquals([], $result);
+       }
 
     //    function test_getStylist()
     //    {
@@ -82,22 +101,6 @@
     //        $result = Stylist::getStylist($stylist_id);
     //        // Assert
     //        $this->assertEquals($test_stylist, $result[0]);
-    //    }
-
-    //    function test_deleteAll()
-    //    {
-    //        // Arrange
-    //        $stylist_name = "Sandy Star";
-    //        $stylist_name2 = "Hank the Tank";
-    //        $test_stylist = new Stylist($stylist_name);
-    //        $test_stylist->save();
-    //        $test_stylist2= new Stylist($stylist_name2);
-    //        $test_stylist2->save();
-    //        //Act
-    //        Stylist::deleteAll();
-    //        $result = Stylist::getAll();
-    //        //Assert
-    //        $this->assertEquals([], $result);
     //    }
 
         // function test_update()
