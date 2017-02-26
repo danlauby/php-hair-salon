@@ -17,6 +17,7 @@
         protected function tearDown()
         {
           Stylist::deleteAll();
+        //   Client::deletell();
         }
 
         function test_getStylistName()
@@ -101,17 +102,19 @@
     //        $this->assertEquals($test_stylist, $result[0]);
     //    }
 
-        // function test_update()
-        // {
-        //     // Arrange
-        //     $stylist_name = "Sandy Star";
-        //     $test_stylist = new Stylist($stylist_name);
-        //     $new_stylist_name = "Hank the Tank";
-        //     // Act
-        //     $test_stylist->update($new_stylist_name);
-        //     // Assert
-        //     $this->assertEquals($new_stylist_name, $test_stylist->getStylistName());
-        // }
+        function testUpdate()
+        {
+            //Arrange
+            $stylist_name = "Sandy Star";
+            $id = null;
+            $test_Stylist = new Stylist($stylist_name, $id);
+            $test_Stylist->save();
+            $new_stylist_name = "Hank the Tank";
+            //Act
+            $test_Stylist->update($new_stylist_name);
+            //Assert
+            $this->assertEquals($new_stylist_name, $test_Stylist->getStylistName());
+        }
 
         // function testDelete()
         // {

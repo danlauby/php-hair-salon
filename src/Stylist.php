@@ -32,12 +32,12 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        // function update($new_stylist_name)
-        // {
-        //     $GLOBALS['DB']->exec("UPDATE stylists SET '$new_stylist_name' WHERE id = {$this->getId()};");
-        //     $this->setStylistName($new_stylist_name);
-        // }
-        //
+        function update($new_stylist_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE stylists SET stylist_name = '{$new_stylist_name}' WHERE id = {$this->getId()};");
+            $this->setStylistName($new_stylist_name);
+        }
+
         // function delete()
         // {
         //     $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
