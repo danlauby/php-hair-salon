@@ -37,11 +37,11 @@
             return $this->stylist_id;
         }
 
-        // function save()
-        // {
-        //     $GLOBALS['DB']->exec("INSERT INTO clients (client_name) VALUES ('{$this->getClientName()}')");
-        //     $this->id = $GLOBALS['DB']->lastInsertId();
-        // }
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO clients (client_name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getSylistId()})");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
 
         // function update($new_client_name)
         // {
@@ -55,23 +55,24 @@
         //     $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
         // }
 
-        // static function getAll()
-        // {
-        //     $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
-        //     $clients = [];
-        //     foreach($returned_clients as $client) {
-        //         $client_name = $client['client_name'];
-        //         $id = $client['id'];
-        //         $new_Client = new Client($client_name, $id);
-        //         array_push($clients, $new_Client);
-        //     }
-        //     return $clients;
-        // }
-        //
-        // static function deleteAll()
-        // {
-        //     $GLOBALS['DB']->exec("DELETE FROM clients;");
-        // }
+        static function getAll()
+        {
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
+            $clients = [];
+            foreach($returned_clients as $client) {
+                $client_name = $client['client_name'];
+                $id = $client['id'];
+                $stylist_id = $client['stylist_id'];
+                $new_Client = new Client($client_name, $stylist_id, $id);
+                array_push($clients, $new_Client);
+            }
+            return $clients;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients;");
+        }
 
         // static function find($new_id)
         // {
