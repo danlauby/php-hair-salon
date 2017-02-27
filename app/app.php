@@ -48,6 +48,19 @@
         return $app['twig']->render('index.html.twig', ["stylists" => Stylist::getAll()]);
     });
 
+
+    $app->get("/edit-stylist-list/{stylist}/{id}", function($stylist, $id) use ($app) {
+        $stylist = Stylist::find($id);
+        return $app['twig']->render('stylists.html.twig', ['stylist' => $stylist, 'clients' => $stylist->getClients()]);
+    });
+
+    $app->post("/edit-stylist-list/{stylist}/{id}", function($stylist, $id) use ($app) {
+        $stylist = Stylist::find($id);
+        $client = new Client(filter_var($_POST['client_name'], FILTER_SANITIZE_MAGIC_QUOTES), $stylist->getId());
+        $client->save();
+        return $app['twig']->render('stylists.html.twig', ['stylist' => $stylist, 'clients' => $stylist->getClients()]);
+    });
+
     return $app;
 
 
