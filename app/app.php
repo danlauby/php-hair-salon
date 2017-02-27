@@ -61,6 +61,30 @@
         return $app['twig']->render('stylists.html.twig', ['stylist' => $stylist, 'clients' => $stylist->getClients()]);
     });
 
+    $app->get("/delete", function() use ($app) {
+        Stylist::deleteAll();
+        return $app['twig']->render('index.html.twig', array("stylists" => Stylist::getAll()));
+    });
+
+    // $app->get("/edit-client/{stylist}/{stylist_id}/client/{client}/{id}", function($stylist, $stylist_id, $client, $id) use ($app) {
+    //   $stylist = Stylist::find($stylist_id);
+    //   $client = Client::find($id);
+    //   return $app['twig']->render('edit-client.html.twig', array("stylist"=> $stylist, 'client' => $client));
+    // });
+
+    // $app->patch("/edit-client/{stylist}/{stylist_id}/client/{client}/{id}", function($stylist, $stylist_id, $client, $id) use ($app) {
+    //   $stylist = Stylist::find($stylist_id);
+    //   $change_client_name = $_POST['change_client_name'];
+    //   $client = Client::find($id);
+    //   $client->update($change_client_name);
+    //   return $app['twig']->render('stylists.html.twig', array("stylist" => $stylist, "clients"=> $stylist->getClients()));
+    // });
+
+    //INDEX-GET DELETEALL PAGE 2nd click (FOR SURE)
+
+
+
+
     return $app;
 
 
