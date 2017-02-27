@@ -38,25 +38,11 @@
             $this->setStylistName($new_stylist_name);
         }
 
-        // function delete()
-        // {
-        //     $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
-        // }
-        //
-        // // static function getStylist($id)
-        // // {
-        // //
-        // //     $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists WHERE id = {$id};");
-        // //
-        // //     $stylists = array();
-        // //     foreach($returned_stylists as $stylist){
-        // //         $new_stylist = $stylist['stylist_name'];
-        // //         $new_id = $name['id'];
-        // //         $new_stylist_object = new Stylist($new_stylist, $new_id);
-        // //         array_push($stylists, $new_stylist_object);
-        // //     }
-        // //     return $stylists[0];
-        // // }
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
+        }
 
         static function getAll()
         {
@@ -88,6 +74,21 @@
             }
             return $match_stylist;
         }
+
+        // // static function getStylist($id)
+        // // {
+        // //
+        // //     $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists WHERE id = {$id};");
+        // //
+        // //     $stylists = array();
+        // //     foreach($returned_stylists as $stylist){
+        // //         $new_stylist = $stylist['stylist_name'];
+        // //         $new_id = $name['id'];
+        // //         $new_stylist_object = new Stylist($new_stylist, $new_id);
+        // //         array_push($stylists, $new_stylist_object);
+        // //     }
+        // //     return $stylists[0];
+        // // }
 
         // static function getMatch($stylist_id)
         // {
