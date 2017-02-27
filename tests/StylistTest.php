@@ -124,12 +124,12 @@
             $test_Stylist = new Stylist($stylist_name, $id);
             $test_Stylist->save();
             $stylist_name2 = "Hank the Tank";
-            $test_Stylist = new Stylist($stylist_name);
-            $test_Stylist->save();
+            $test_Stylist2 = new Stylist($stylist_name2);
+            $test_Stylist2->save();
             //Act
             $test_Stylist->delete();
             //Assert
-            $this->assertEquals([$stylist_name2], Stylist::getAll());
+            $this->assertEquals([$test_Stylist2], Stylist::getAll());
         }
 
         static function find($id)

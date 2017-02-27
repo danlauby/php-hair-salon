@@ -191,16 +191,22 @@
         //     $this->assertEquals([$client_name2], Client::getAll());
         // }
         //
-        // static function find($id)
-        // {
-        //     $found_client = null;
-        //     $clients = Client::getAll();
-        //     foreach($clients as $client) {
-        //         $client_id = $client->getId();
-        //         if ($client_id == $id) {
-        //             $found_client = $client;
-        //         }
-        //     }
-        //     return $found_client;
-        // }
+        function test_find()
+        {
+            //Arrange
+            $stylist_name = "Sandy Star";
+            $test_Stylist = new Stylist($stylist_name);
+            $test_Stylist->save();
+            $stylist_id = $test_Stylist->getId();
+            $client_name = "Lilly Anne";
+            $client_name2 = "Bobby Showdown.";
+            $test_Client = new Client($client_name, $stylist_id);
+            $test_Client->save();
+            $test_Client2 = new Client($client_name2, $stylist_id);
+            $test_Client2->save();
+            //Act
+            $result = Client::find($test_Client->getId());
+            //Assert
+            $this->assertEquals($test_Client, $result);
+        }
     }
