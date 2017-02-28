@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hair Salon Manager</title>
+        <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Oxygen" rel="stylesheet">
+        <link rel="stylesheet" href="{{app.request.getbaseurl}}/css/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Stylist: {{stylist.getStylistName}}<a href="/stylist/{{stylist.getId}}/update"><button class="btn btn-warning">Update Stylist</button></a></h1>
+
+            <form class="form-group" action="/clients" method="post">
+                <input type="hidden" name="stylist_id" value="{{stylist.getId()}}">
+                <label for="stylist_name">Create new Client:</label>
+                <input class="form-control" type="text" name="client_name" required><br>
+                <button class="btn btn-success" type="submit">Add</button>
+            </form>
+
+            {% if clients is not empty %}
+                <ul>
+                    {% for client in clients %}
+                      <li>
+                            <a href="/client/{{client.getId}}/update">{{ client.getClientName }}</a>
+                      </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}</br>
+
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

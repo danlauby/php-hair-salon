@@ -6,7 +6,7 @@
     */
 
     require_once "src/Stylist.php";
-
+    require_once "src/Client.php";
 
     $server = 'mysql:host=localhost:3306;dbname=hair_salon_test';
     $username = 'root';
@@ -86,21 +86,31 @@
             $this->assertEquals([], $result);
         }
 
-    //    function test_getStylist()
-    //    {
-    //        // Arrange
-    //        $stylist_name = "Sandy Star";
-    //        $stylist_name2 = "Hank the Tank";
-    //        $stylist_id = null;
-    //        $test_stylist = new Stylist($stylist_name);
-    //        $test_stylist->save();
-    //        $test_stylist2= new Stylist($stylist_name2);
-    //        $test_stylist2->save();
-    //        // Act
-    //        $result = Stylist::getStylist($stylist_id);
-    //        // Assert
-    //        $this->assertEquals($test_stylist, $result[0]);
-    //    }
+        function testGetClients()
+        {
+            //Arrange
+            $stylist_name = "Sandy Star";
+            $id = null;
+            $test_Stylist = new Stylist($stylist_name, $id);
+            $test_Stylist->save();
+
+            $test_stylist_id = $test_Stylist->getId();
+
+            $client_name = "Lilly Anne";
+            $test_Client = new Client($client_name, $id, $test_stylist_id);
+            $test_Client->save();
+
+            $client_name2 = "Bobby Showdown";
+            $test_Client2 = new Client($client_name2, $id, $test_stylist_id);
+            $test_Client2->save();
+
+
+            //Act
+            $result = $test_Stylist->getClients();
+
+            //Assert
+            $this->assertEquals([$test_Client, $test_Client2], $result);
+        }
 
         function testUpdate()
         {
@@ -130,6 +140,27 @@
             $test_Stylist->delete();
             //Assert
             $this->assertEquals([$test_Stylist2], Stylist::getAll());
+        }
+
+        function testDeleteStylistClients()
+        {
+            //Arrange
+            $stylist_name = "Sandy Star";
+            $id = null;
+            $test_Stylist = new Stylist($stylist_name, $id);
+            $test_Stylist->save();
+
+            $client_name = "Lilly Anne";
+            $stylist_id = $test_Stylist->getId();
+            $test_Client = new Client($client_name, $id, $stylist_id);
+            $test_Client->save();
+
+
+            //Act
+            $test_Stylist->delete();
+
+            //Assert
+            $this->assertEquals([], Client::getAll());
         }
 
         static function find($id)
